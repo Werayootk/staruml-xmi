@@ -491,6 +491,7 @@ reader.elements["uml:Class"] = function (node) {
   appendTo(json, "ownedElements", _behaviored.ownedElements);
   appendTo(json, "attributes", _encapsulated.attributes);
   json["_type"] = "UMLClass";
+  console.log('Class: ', json);
   return json;
 };
 
