@@ -496,9 +496,7 @@ reader.elements["uml:Class"] = function (node) {
   json["_type"] = "UMLClass";
   if (json._id == "AAAAAAGOajJbYFrwtAg=") {
     json['stereotype'] = {
-      _type: "UMLStereotype",
       name: "Database",
-      _parent: { $ref: "AAAAAAGOZS0Q/PdYGqM=" },
       _id: "AAAAAAGOZS0Q/fhha3w=",      
     }
   }
