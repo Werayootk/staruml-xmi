@@ -806,6 +806,7 @@ reader.elements["uml:Profile"] = function (node) {
 reader.elements["uml:Stereotype"] = function (node) {
   var json = reader.elements["uml:Class"](node);
   json["_type"] = "UMLStereotype";
+  console.log("Stereotype", json);  
   return json;
 };
 
