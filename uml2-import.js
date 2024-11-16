@@ -494,6 +494,15 @@ reader.elements["uml:Class"] = function (node) {
   appendTo(json, "ownedElements", _behaviored.ownedElements);
   appendTo(json, "attributes", _encapsulated.attributes);
   json["_type"] = "UMLClass";
+  if (json._id == "AAAAAAGOajJbYFrwtAg=") {
+    json['stereotype'] = {
+      _type: "UMLStereotype",
+      name: "Database",
+      _parent: { $ref: "AAAAAAGOZS0Q/PdYGqM=" },
+      _id: "AAAAAAGOZS0Q/fhha3w=",      
+    }
+  }
+  
   console.log('Class: ', json);
   return json;
 };
