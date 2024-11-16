@@ -340,12 +340,16 @@ function loadFromFile(filename) {
   var parser = new DOMParser();
   var dom = parser.parseFromString(data, "text/xml");
   var XMINode = dom.childNodes[0]; // dom.getElementsByTagName("XMI")[0];
-
+  console.log("XMI Node: " + XMINode.nodeName);
+  console.log("XMI Node" + XMINode);
+    
   // Read top-level elements
   var topLevelElements = [];
   for (var i = 0, len = XMINode.childNodes.length; i < len; i++) {
     var child = XMINode.childNodes[i];
+    console.log("Child: " + child);    
     var fun = elements[child.nodeName];
+    console.log("Fun: " + fun);
     if (fun) {
       var elem = fun(child);
       if (elem) {
