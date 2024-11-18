@@ -167,6 +167,12 @@ function readExpression(node, name, defaultValue) {
   return defaultValue;
 }
 
+function readStereotype(node, name) {
+  console.log('readStereotype');
+  console.log('node', node);
+  console.log('name', name);  
+}
+
 /**
  * Read an elements of node
  * @param {XMLNode} node
@@ -229,9 +235,7 @@ function readElementArray(node, name, defaultElementType) {
           jsonArray.push(elem);
         }
       }
-    } else {
-      console.log("Child readElementArray: " + JSON.stringify(child, null, 2));      
-    }
+    } 
   }
   return jsonArray;
 }

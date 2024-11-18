@@ -257,14 +257,14 @@ reader.elements["uml:Package"] = function (node) {
     "ownedElements",
     reader.readElementArray(node, "ownedConnector"),
   ); // for EA
-  // console.log("UMLPackage", json);  
+  console.log("UMLPackage", json);  
   return json;
 };
 
 reader.elements["uml:Model"] = function (node) {
   var json = reader.elements["uml:Package"](node);
   json["_type"] = "UMLModel";
-  // console.log("UMLModel", json);  
+  console.log("UMLModel", json);  
   return json;
 };
 
