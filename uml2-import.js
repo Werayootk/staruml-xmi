@@ -498,7 +498,7 @@ reader.elements["uml:Class"] = function (node) {
   appendTo(json, "ownedElements", _behaviored.ownedElements);
   appendTo(json, "attributes", _encapsulated.attributes);
   json["_type"] = "UMLClass";
-  json["xmi:Extension"] = reader.readElement(node, "xmi:Extension");
+  json["xmi:Extension"] = reader.elements["xmi:Extension"](node);
   console.log('UMLClass: ', json);
   return json;
 };
