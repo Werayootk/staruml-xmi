@@ -23,6 +23,8 @@
 
 const reader = require("./xmi21-reader");
 
+let stereotypes = [];
+
 function addTo(json, field, element) {
   if (!Array.isArray(json[field])) {
     json[field] = [];
@@ -494,13 +496,6 @@ reader.elements["uml:Class"] = function (node) {
   appendTo(json, "ownedElements", _behaviored.ownedElements);
   appendTo(json, "attributes", _encapsulated.attributes);
   json["_type"] = "UMLClass";
-  if (json._id == "AAAAAAGOajJbYFrwtAg=") {
-    json['stereotype'] = {
-      name: "Database",
-      _id: "AAAAAAGOZS0Q/fhha3w=",      
-    }
-  }
-  
   console.log('Class: ', json);
   return json;
 };
@@ -817,7 +812,9 @@ reader.elements["uml:Profile"] = function (node) {
 reader.elements["uml:Stereotype"] = function (node) {
   var json = reader.elements["uml:Class"](node);
   json["_type"] = "UMLStereotype";
+  stereotypes.push(json);
   console.log("Stereotype", json);  
+  console.log("Stereotypes", stereotypes);  
   return json;
 };
 
