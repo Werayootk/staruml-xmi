@@ -22,6 +22,7 @@
  */
 
 const fs = require("fs");
+const { type } = require("os");
 
 /**
  * XMLWriter
@@ -287,6 +288,7 @@ function writeExtension(json, valueMap) {
   if (!node) {
     node = {
       extender: "StarUML",
+      "xmi:type": "Extension",
     };
     json["xmi:Extension"] = node;
   }
