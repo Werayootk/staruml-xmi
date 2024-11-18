@@ -447,7 +447,7 @@ reader.elements["uml:Classifier"] = function (node) {
     "ownedOperation",
     "uml:Operation",
   );
-  json["extensions"] = reader.readElementArray(node, "xmi:Extension", "uml:Extension");
+  json["extensions"] = reader.readElementArray(node, "xmi:Extension", "StarUML");
   var _generalizations = reader.readElementArray(node, "generalization");
   _generalizations.forEach(function (g) {
     g["source"] = { $ref: json._id };
