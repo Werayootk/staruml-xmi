@@ -177,7 +177,6 @@ function readElement(node, name) {
   var parentId = readString(node, "xmi:id");
   for (var i = 0, len = node.childNodes.length; i < len; i++) {
     var child = node.childNodes[i];
-    console.log("Child readElement: ", child);
     if (child.nodeType === ELEMENT_NODE && child.nodeName === name) {
       var _type = child.getAttribute("xmi:type");
       var fun = elements[_type];
@@ -192,6 +191,7 @@ function readElement(node, name) {
             elem._parent = { $ref: parentId };
           }
           idMap[elem._id] = elem;
+          console.log("JSON Object: " + JSON.stringify(elem, null, 2));
           return elem;
         }
       }
@@ -213,7 +213,6 @@ function readElementArray(node, name, defaultElementType) {
 
   for (var i = 0, len = node.childNodes.length; i < len; i++) {
     var child = node.childNodes[i];
-    console.log("Child readElementArray: ", child);
     if (child.nodeType === ELEMENT_NODE && child.nodeName === name) {
       var _type = child.getAttribute("xmi:type") || defaultElementType;
       var fun = elements[_type];
@@ -233,6 +232,7 @@ function readElementArray(node, name, defaultElementType) {
       }
     }
   }
+  console.log("JSON Array: " + JSON.stringify(jsonArray, null, 2));
   return jsonArray;
 }
 
