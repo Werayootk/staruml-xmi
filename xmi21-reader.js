@@ -191,7 +191,6 @@ function readElement(node, name) {
             elem._parent = { $ref: parentId };
           }
           idMap[elem._id] = elem;
-          console.log("JSON Object: " + JSON.stringify(elem, null, 2));
           return elem;
         }
       }
@@ -230,9 +229,10 @@ function readElementArray(node, name, defaultElementType) {
           jsonArray.push(elem);
         }
       }
+    } else {
+      console.log("Child readElementArray: " + JSON.stringify(child, null, 2));      
     }
   }
-  console.log("JSON Array: " + JSON.stringify(jsonArray, null, 2));
   return jsonArray;
 }
 
