@@ -288,12 +288,8 @@ function writeExtension(json, valueMap) {
   if (!node) {
     node = {
       extender: "StarUML",
-      "xmi:type": "Extension",
     };
     json["xmi:Extension"] = node;
-    if (!node["xmi:type"]) {
-      node["xmi:type"] = "Extension";
-    }
   }
   for (var key in valueMap) {
     node[key] = valueMap[key];
