@@ -127,7 +127,7 @@ reader.elements["uml:Element"] = function (node) {
     node.setAttribute("xmi:id", _id);
   }
   json["_id"] = _id;
-  console.log("Element", json);  
+  // console.log("Element", json);  
   return json;
 };
 
@@ -257,14 +257,14 @@ reader.elements["uml:Package"] = function (node) {
     "ownedElements",
     reader.readElementArray(node, "ownedConnector"),
   ); // for EA
-  console.log("UMLPackage", json);  
+  // console.log("UMLPackage", json);  
   return json;
 };
 
 reader.elements["uml:Model"] = function (node) {
   var json = reader.elements["uml:Package"](node);
   json["_type"] = "UMLModel";
-  console.log("UMLModel", json);  
+  // console.log("UMLModel", json);  
   return json;
 };
 
@@ -487,6 +487,7 @@ reader.elements["uml:BehavioredClassifier"] = function (node) {
 };
 
 reader.elements["uml:Class"] = function (node) {
+  log("Class: ", node);
   var json = reader.elements["uml:Classifier"](node);
   var _encapsulated = reader.elements["uml:EncapsulatedClassifier"](node);
   var _behaviored = reader.elements["uml:BehavioredClassifier"](node);
@@ -813,7 +814,6 @@ reader.elements["uml:Stereotype"] = function (node) {
   var json = reader.elements["uml:Class"](node);
   json["_type"] = "UMLStereotype";
   stereotypes.push(json);
-  console.log("Stereotype", json);  
   console.log("Stereotypes", stereotypes);  
   return json;
 };
