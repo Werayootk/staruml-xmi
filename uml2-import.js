@@ -487,7 +487,7 @@ reader.elements["uml:BehavioredClassifier"] = function (node) {
 };
 
 reader.elements["uml:Class"] = function (node) {
-  log("Class: ", node);
+  console.log("Class: ", node);
   var json = reader.elements["uml:Classifier"](node);
   var _encapsulated = reader.elements["uml:EncapsulatedClassifier"](node);
   var _behaviored = reader.elements["uml:BehavioredClassifier"](node);
@@ -497,7 +497,7 @@ reader.elements["uml:Class"] = function (node) {
   appendTo(json, "ownedElements", _behaviored.ownedElements);
   appendTo(json, "attributes", _encapsulated.attributes);
   json["_type"] = "UMLClass";
-  console.log('Class: ', json);
+  console.log('UMLClass: ', json);
   return json;
 };
 
