@@ -291,6 +291,9 @@ function writeExtension(json, valueMap) {
       "xmi:type": "Extension",
     };
     json["xmi:Extension"] = node;
+    if (!node["xmi:type"]) {
+      node["xmi:type"] = "Extension";
+    }
   }
   for (var key in valueMap) {
     node[key] = valueMap[key];
