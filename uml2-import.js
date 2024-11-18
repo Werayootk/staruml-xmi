@@ -355,6 +355,12 @@ reader.elements["uml:Operation"] = function (node) {
   return json;
 };
 
+reader.elements["uml:Extension"] = function (node) {
+  var json = reader.elements["uml:Extension"](node);
+  json["_type"] = "UMLExtension";
+  return json;
+};
+
 // Templates ...............................................................
 
 reader.elements["uml:TemplateableElement"] = function (node) {
@@ -492,13 +498,15 @@ reader.elements["uml:Class"] = function (node) {
   var json = reader.elements["uml:Classifier"](node);
   var _encapsulated = reader.elements["uml:EncapsulatedClassifier"](node);
   var _behaviored = reader.elements["uml:BehavioredClassifier"](node);
+  var _extension = reader.elements["uml:Extension"](node);
+  console.log("_extension: ", _extension);
+  Object.assign(json, _extension);
   Object.assign(json, _encapsulated);
   Object.assign(json, _behaviored);
   appendTo(json, "ownedElements", _encapsulated.ownedElements);
   appendTo(json, "ownedElements", _behaviored.ownedElements);
   appendTo(json, "attributes", _encapsulated.attributes);
   json["_type"] = "UMLClass";
-  json["_extension"] = reader.elements["uml:Extension"](node);
   console.log('UMLClass: ', json);
   return json;
 };
