@@ -167,12 +167,6 @@ function readExpression(node, name, defaultValue) {
   return defaultValue;
 }
 
-function readStereotype(node, name) {
-  console.log('readStereotype');
-  console.log('node', node);
-  console.log('name', name);  
-}
-
 /**
  * Read an elements of node
  * @param {XMLNode} node

@@ -262,6 +262,8 @@ reader.elements["uml:Package"] = function (node) {
 };
 
 reader.elements["uml:Model"] = function (node) {
+  var ext = reader.elements["ExtensibleModel"](node);
+  console.log("ExtensibleModel", ext);
   var json = reader.elements["uml:Package"](node);
   json["_type"] = "UMLModel";
   console.log("UMLModel", json);  
