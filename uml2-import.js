@@ -128,8 +128,7 @@ reader.elements["uml:Element"] = function (node) {
   }
   json["_id"] = _id;
   // console.log("Element", json);  
-    // เพิ่มการอ่าน stereotype
-  var stereotypeId = readStereotype(node);
+  var stereotypeId = reader.readStereotype(node);
   if (stereotypeId) {
     json["stereotype"] = { $ref: stereotypeId };
   }
