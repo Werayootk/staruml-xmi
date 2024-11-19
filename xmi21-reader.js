@@ -278,6 +278,21 @@ function readRefArray(node, name) {
   return jsonArray;
 }
 
+function readStereotype(node) {
+  for (var i = 0; i < node.childNodes.length; i++) {
+    var child = node.childNodes[i];
+    if (child.nodeName === "xmi:Extension" && child.getAttribute("extender") === "StarUML") {
+      for (var j = 0; j < child.childNodes.length; j++) {
+        var subChild = child.childNodes[j];
+        if (subChild.nodeName === "stereotype") {
+          return subChild.getAttribute("value");
+        }
+      }
+    }
+  }
+  return null;
+}
+
 /**
  * Execute All Post-processors
  */
@@ -386,6 +401,7 @@ exports.readElement = readElement;
 exports.readElementArray = readElementArray;
 exports.readRef = readRef;
 exports.readRefArray = readRefArray;
+exports.readStereotype = readStereotype;
 
 exports.postprocess = postprocess;
 exports.clear = clear;

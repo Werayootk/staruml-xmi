@@ -128,6 +128,11 @@ reader.elements["uml:Element"] = function (node) {
   }
   json["_id"] = _id;
   // console.log("Element", json);  
+    // เพิ่มการอ่าน stereotype
+  var stereotypeId = readStereotype(node);
+  if (stereotypeId) {
+    json["stereotype"] = { $ref: stereotypeId };
+  }
   return json;
 };
 
@@ -1598,6 +1603,16 @@ reader.postprocessors.push(function (elem) {
       } else if (parent.messages && parent.messages.includes(elem)) {
         parent.messages = parent.messages.filter((e) => e !== elem);
       }
+    }
+  }
+});
+
+// process Stereotypes
+reader.postprocessors.push(function (elem) {
+  if (elem.stereotype && elem.stereotype.$ref) {
+    var stereotype = stereotypes.find(s => s._id === elem.stereotype.$ref);
+    if (stereotype) {
+      elem.stereotype = stereotype.name;
     }
   }
 });
